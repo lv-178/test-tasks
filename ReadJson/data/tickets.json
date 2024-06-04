@@ -1,5 +1,5 @@
-﻿{
-  "tickets": [{
+{ 
+  "tickets": [{ 
     "origin": "VVO",
     "origin_name": "Владивосток",
     "destination": "TLV",
@@ -11,7 +11,7 @@
     "carrier": "TK",
     "stops": 3,
     "price": 12400
-  }, {
+   }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
     "destination": "TLV",
@@ -83,8 +83,7 @@
     "carrier": "TK",
     "stops": 1,
     "price": 13600
-  }, 
-  {
+  }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
     "destination": "UFA",
@@ -96,8 +95,7 @@
     "carrier": "TK",
     "stops": 1,
     "price": 33400
-  },
-  {
+  }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
     "destination": "TLV",
@@ -109,8 +107,7 @@
     "carrier": "TK",
     "stops": 0,
     "price": 14250
-  }, 
-  {
+  }, {
     "origin": "LRN",
     "origin_name": "Ларнака",
     "destination": "TLV",
@@ -122,8 +119,7 @@
     "carrier": "SU",
     "stops": 1,
     "price": 7000
-  },
-  {
+  }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
     "destination": "TLV",
@@ -135,8 +131,7 @@
     "carrier": "SU",
     "stops": 1,
     "price": 16700
-  }, 
-  {
+  }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
     "destination": "TLV",
