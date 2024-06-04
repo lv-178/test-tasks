@@ -2,10 +2,7 @@ package com.example.springexample;
 
 import lombok.Data;
 
-import java.sql.Time;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Data
 public class Flight {

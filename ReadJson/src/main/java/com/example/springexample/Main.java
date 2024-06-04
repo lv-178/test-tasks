@@ -1,55 +1,14 @@
 package com.example.springexample;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) throws java.io.IOException, org.json.simple.parser.ParseException {
-        ArrayList<Flight> flights = new ArrayList<>();
+    public static void main(String[] args) {
         String directory = "/home/administrator/Downloads/tickets.json";
-//        String file = Files.readString(Path.of(directory));
-        JSONParser parser = new JSONParser();
-
-        String content = new String(Files.readAllBytes(Paths.get(directory)));
-//        System.out.println(content);
-
-//        String content2 = "{ \"tickets\": [{ \"origin\": \"V\" }, { \"origin\": \"F\" }, { \"origin\": \"M\" }]}";
-
-        JSONObject jsonObject = (JSONObject) parser.parse(content);
-
-        jsonObject.keySet().forEach(object ->
-        {
-            JSONArray tickets = (JSONArray) jsonObject.get("tickets");
-            tickets.forEach(object1 -> {
-                try {
-                    JSONObject jsonObjectFlight = (JSONObject) parser.parse(object1.toString());
-                    Flight flight = new Flight(); //(String) jsonObjectFlight.get("origin")
-                    flight.setOrigin((String) jsonObjectFlight.get("origin"));
-                    flight.setOriginName((String) jsonObjectFlight.get("origin_name"));
-                    flight.setDestination((String) jsonObjectFlight.get("destination"));
-                    flight.setDestinationName((String) jsonObjectFlight.get("destination_name"));
-                    flight.setDepartureTime(LocalDateTime.of(LocalDate.parse(((String) jsonObjectFlight.get("departure_date")), DateTimeFormatter.ofPattern("dd.MM.yy")), LocalTime.parse(((String) jsonObjectFlight.get("departure_time")), DateTimeFormatter.ofPattern("[HH:mm][H:mm]"))));
-                    flight.setArrivalTime(LocalDateTime.of(LocalDate.parse(((String) jsonObjectFlight.get("arrival_date")), DateTimeFormatter.ofPattern("dd.MM.yy")), LocalTime.parse(((String) jsonObjectFlight.get("arrival_time")), DateTimeFormatter.ofPattern("[HH:mm][H:mm]"))));
-                    flight.setCarrier((String) jsonObjectFlight.get("carrier"));
-                    flight.setStops((long) jsonObjectFlight.get("stops"));
-                    flight.setPrice((long) jsonObjectFlight.get("price"));
-                    flights.add(flight);
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-        });
-        System.out.println(flights);
+        ArrayList<Flight> flights = JsonToObject.readJson(directory);
+        System.out.println("самые короткие перелёты каждого перевозчика");
+        System.out.println(FindMinTime.toString(FindMinTime.find(flights)));
+        System.out.println("разница между средней ценой и медианой для полёта между городами Владивосток и Тель-Авив");
+        System.out.println(FindAverage.findDifference(flights));
     }
 }
