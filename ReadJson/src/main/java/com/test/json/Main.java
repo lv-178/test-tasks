@@ -1,10 +1,10 @@
-package com.example.springexample;
+package com.test.json;
 
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        String directory = "data/tickets.json";
+        String directory = "tickets.json";
         ArrayList<Flight> flights = JsonToObject.readJson(directory);
         System.out.println("самые короткие перелёты каждого перевозчика");
         System.out.println(FindMinTime.toString(FindMinTime.find(flights)));

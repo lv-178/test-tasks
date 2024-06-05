@@ -1,4 +1,4 @@
-package com.example.springexample;
+package com.test.json;
 
 import java.time.ZoneOffset;
 import java.util.ArrayList;

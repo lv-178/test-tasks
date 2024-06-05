@@ -1,4 +1,4 @@
-package com.example.springexample;
+package com.test.json;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -20,8 +20,13 @@ public class JsonToObject {
         ArrayList<Flight> flights = new ArrayList<>();
         JSONParser parser = new JSONParser();
 
+        String content = "";
+
         try {
-            String content = new String(Files.readAllBytes(Paths.get(directory)));
+            ClassLoader classLoader = JsonToObject.class.getClassLoader();
+            String path = classLoader.getResource(directory).getPath();
+            content = Files.readString(Paths.get(path));
+
             JSONObject jsonObject = (JSONObject) parser.parse(content);
 
             jsonObject.keySet().forEach(object ->
