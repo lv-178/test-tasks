@@ -134,7 +134,21 @@ public class UniSafeTestAssignment {
             }
 
             if(((prevX - minX) * (nextY - minY) - (prevY - minY) * (nextX - minX)) > 0) {
+                figure.removeLast();
+                figure.removeLast();
                 Collections.reverse(figure);
+                for (List<Integer> line : figure) {
+                    if(line.size() > 2) {
+                        line.set(0, (line.get(0) + line.get(4)));
+                        line.set(4, (line.get(0) - line.get(4)));
+                        line.set(0, (line.get(0) - line.get(4)));
+                        line.set(1, (line.get(1) + line.get(5)));
+                        line.set(5, (line.get(1) - line.get(5)));
+                        line.set(1, (line.get(1) - line.get(5)));
+                    }
+                }
+                figure.add(figure.get(0));
+                figure.add(figure.get(1));
             }
         }
         return listOfFigures;
